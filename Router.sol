@@ -55,7 +55,7 @@ contract MevSwapRouter {
         whitelistFeeToken(WETH, true);
 
         // whitelist tokens
-        for (uint i=0;i<tokens;i++) {
+        for (uint i=0;i<tokens.length;i++) {
             whitelistFeeToken(tokens[i], true);
         }
     }
