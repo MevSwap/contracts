@@ -46,13 +46,18 @@ contract MevSwapRouter {
     address public feeTaker;
     mapping(address => bool) private feeTokenWhitelist;
 
-    constructor(address _feeTaker, address _weth) {
+    constructor(address _feeTaker, address _weth, address[] memory tokens) {
         owner = msg.sender;
         feeTaker = _feeTaker;
         WETH = _weth;
 
         // weth whitelisted by default for fee
         whitelistFeeToken(WETH, true);
+
+        // whitelist tokens
+        for (uint i=0;i<tokens;i++) {
+            whitelistFeeToken(tokens[i], true);
+        }
     }
 
     receive() external payable {
