@@ -70,6 +70,10 @@ contract MevSwapRouter {
         feeTokenWhitelist[token] = enabled;
     }
 
+    function isTokenWhitelisted(address token) public view returns (bool) {
+        return feeTokenWhitelist[token];
+    }
+
     function setFeeTaker(address newFeeTaker) external onlyOwner {
         feeTaker = newFeeTaker;
     }
